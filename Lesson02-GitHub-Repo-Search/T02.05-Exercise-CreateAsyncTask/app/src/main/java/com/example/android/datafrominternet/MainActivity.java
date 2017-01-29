@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+            if (s != null && !s.equals("")){
+                mSearchResultsTextView.setText(s);
+            }
         }
     }
-
-    // TODO (3) Override onPostExecute to display the results in the TextView
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
