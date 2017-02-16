@@ -32,15 +32,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    // TODO (1) Create a static final key to store the query's URL
-
-    // TODO (2) Create a static final key to store the search's raw JSON
+    private final static String QUERY_URL = "github.query.url";
+    private final static String SEARCH_JSON = "github.query.result";
 
     private EditText mSearchBoxEditText;
 
     private TextView mUrlDisplayTextView;
     private TextView mSearchResultsTextView;
-
     private TextView mErrorMessageDisplay;
 
     private ProgressBar mLoadingIndicator;
@@ -59,7 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
 
-        // TODO (9) If the savedInstanceState bundle is not null, set the text of the URL and search results TextView respectively
+
+        if (savedInstanceState != null){
+            mUrlDisplayTextView.setText(savedInstanceState.getString(QUERY_URL, ""));
+            mSearchResultsTextView.setText(savedInstanceState.getString(SEARCH_JSON, ""));
+        }
     }
 
     /**
@@ -151,13 +153,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // TODO (3) Override onSaveInstanceState to persist data across Activity recreation
-    // Do the following steps within onSaveInstanceState
-    // TODO (4) Make sure super.onSaveInstanceState is called before doing anything else
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String urlSearched = mUrlDisplayTextView.getText().toString();
+        outState.putString(QUERY_URL, urlSearched);
 
-    // TODO (5) Put the contents of the TextView that contains our URL into a variable
-    // TODO (6) Using the key for the query URL, put the string in the outState Bundle
-
-    // TODO (7) Put the contents of the TextView that contains our raw JSON search results into a variable
-    // TODO (8) Using the key for the raw JSON search results, put the search results into the outState Bundle
+        String jsonResult = mSearchResultsTextView.getText().toString();
+        outState.putString(SEARCH_JSON, jsonResult);
+    }
 }
