@@ -7,6 +7,12 @@
           - Used by Preferences  -
           - - - - - - - - - - - - - - - -->
 
+    <!-- CheckBoxPreferences -->
+    <string name="visualizer_pref_show_bass_key" translatable="false">show_bass</string>
+    <string name="visualizer_pref_show_bass_title" translatable="false">Show bass</string>
+    <string name="visualizer_pref_show_bass_summary_off" translatable="false">Hidden</string>
+    <string name="visualizer_pref_show_bass_summary_on" translatable="false">Shown</string>
+
     <!-- Value in SharedPreferences for red color option -->
     <string name="pref_color_red_value" translatable="false">red</string>
 
