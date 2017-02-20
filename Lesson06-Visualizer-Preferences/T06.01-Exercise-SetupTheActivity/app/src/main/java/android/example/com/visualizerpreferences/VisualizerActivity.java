@@ -138,7 +138,4 @@ public class VisualizerActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    // TODO (5) Add the menu to the menu bar
-    // TODO (6) When the "Settings" menu item is pressed, open SettingsActivity
 }
