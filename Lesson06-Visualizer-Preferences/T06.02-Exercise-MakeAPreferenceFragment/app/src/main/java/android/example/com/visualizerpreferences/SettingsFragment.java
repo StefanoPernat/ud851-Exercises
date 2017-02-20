@@ -1,3 +1,5 @@
+package android.example.com.visualizerpreferences;
+
 import android.example.com.visualizerpreferences.R;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;
