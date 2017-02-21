@@ -11,16 +11,16 @@
         android:title="@string/pref_show_bass_label" />
 
     <CheckBoxPreference
-        android:defaultValue=""
-        android:key=""
-        app:summaryOff=""
-        android:summaryOn=""
-        android:title=""/>
+        android:defaultValue="@bool/pref_show_mid_default"
+        android:key="@string/pref_show_mid_range_key"
+        app:summaryOff="@string/pref_show_false"
+        android:summaryOn="@string/pref_show_true"
+        android:title="@string/pref_show_mid_range_label"/>
 
     <CheckBoxPreference
-        android:defaultValue=""
-        android:key=""
-        app:summaryOff=""
-        android:summaryOn=""
-        android:title=""/>
+        android:defaultValue="@bool/pref_show_treble_default"
+        android:key="@string/pref_show_treble_key"
+        app:summaryOff="@string/pref_show_false"
+        android:summaryOn="@string/pref_show_true"
+        android:title="@string/pref_show_treble_label"/>
 </PreferenceScreen>
