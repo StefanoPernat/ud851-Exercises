@@ -23,6 +23,10 @@
         android:summaryOn="@string/pref_show_true"
         android:title="@string/pref_show_treble_label" />
 
-    <!-- TODO (1) Add a list preference -->
+    <ListPreference
+        android:defaultValue=""
+        android:summary=""
+        android:key=""
+        android:title=""/>
 
 </PreferenceScreen>
