@@ -1,7 +1,8 @@
 package com.example.android.waitlist.data;
 
-// TODO (1) extend the SQLiteOpenHelper class
-public class WaitlistDbHelper {
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class WaitlistDbHelper extends SQLiteOpenHelper{
 
     // TODO (2) Create a static final String called DATABASE_NAME and set it to "waitlist.db"
 
