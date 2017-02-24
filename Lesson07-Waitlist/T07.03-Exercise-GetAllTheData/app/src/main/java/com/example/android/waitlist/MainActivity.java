@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.android.waitlist.data.TestUtil;
 import com.example.android.waitlist.data.WaitlistDbHelper;
 
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         WaitlistDbHelper waitlistDbHelper = new WaitlistDbHelper(this);
         mDb = waitlistDbHelper.getWritableDatabase();
 
-        // TODO (4) call insertFakeData from TestUtil and pass the database reference mDb
+        TestUtil.insertFakeData(mDb);
 
         // TODO (7) Run the getAllGuests function and store the result in a Cursor variable
 
