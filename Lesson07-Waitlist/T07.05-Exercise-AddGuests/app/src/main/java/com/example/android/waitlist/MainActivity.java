@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // because you will be adding restaurant customers
         mDb = dbHelper.getWritableDatabase();
 
-        // TODO (3) Remove this fake data call since we will be inserting our own data now
-        TestUtil.insertFakeData(mDb);
-
         // Get all guest info from the database and save in a cursor
         Cursor cursor = getAllGuests();
 
