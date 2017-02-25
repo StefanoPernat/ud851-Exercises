@@ -18,13 +18,13 @@ import com.example.android.waitlist.data.WaitlistDbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private GuestListAdapter mAdapter;
     private SQLiteDatabase mDb;
 
     private EditText mNewGuestNameEditText;
     private EditText mNewPartySizeEditText;
-
-    // TODO (13) Create a constant string LOG_TAG that is equal to the class.getSimpleName()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
