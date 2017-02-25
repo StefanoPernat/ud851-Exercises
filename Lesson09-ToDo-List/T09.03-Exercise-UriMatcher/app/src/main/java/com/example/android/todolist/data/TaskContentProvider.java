@@ -32,7 +32,7 @@ public class TaskContentProvider extends ContentProvider {
     public static final int TASKS = 100;
     public static final int TASK_WITH_ID = 101;
 
-    // TODO (3) Declare a static variable for the Uri matcher that you construct
+    private static final UriMatcher sUriMatcher = buildUriMatcher();
 
     public static UriMatcher buildUriMatcher(){
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
