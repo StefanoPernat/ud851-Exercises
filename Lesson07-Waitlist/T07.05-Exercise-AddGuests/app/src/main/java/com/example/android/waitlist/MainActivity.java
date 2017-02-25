@@ -68,15 +68,20 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addToWaitlist(View view) {
 
-        // TODO (9) First thing, check if any of the EditTexts are empty, return if so
+        if ((mNewGuestNameEditText == null || mNewGuestNameEditText.getText().toString().equals("")) ||
+                (mNewPartySizeEditText == null) || mNewPartySizeEditText.getText().toString().equals("")){
+            return;
+        }
 
-        // TODO (10) Create an integer to store the party size and initialize to 1
+        int partySize;
+        try {
+            partySize = Integer.parseInt(mNewPartySizeEditText.getText().toString());
+        } catch (Exception ex){
+            partySize = 1;
+            ex.printStackTrace();
+        }
 
-        // TODO (11) Use Integer.parseInt to parse mNewPartySizeEditText.getText to an integer
-
-        // TODO (12) Make sure you surround the Integer.parseInt with a try catch and log any exception
-
-        // TODO (14) call addNewGuest with the guest name and party size
+        addNewGuest(mNewGuestNameEditText.getText().toString(), partySize);
 
         // TODO (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
 
