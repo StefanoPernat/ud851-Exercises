@@ -82,10 +82,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         addNewGuest(mNewGuestNameEditText.getText().toString(), partySize);
+        mAdapter.swapCursor(getAllGuests());
 
-        // TODO (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
-
-        // TODO (20) To make the UI look nice, call .getText().clear() on both EditTexts, also call clearFocus() on mNewPartySizeEditText
+        mNewPartySizeEditText.getText().clear();
+        mNewPartySizeEditText.clearFocus();
+        mNewGuestNameEditText.getText().clear();
 
     }
 
