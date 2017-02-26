@@ -18,6 +18,7 @@ package com.example.android.todolist;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.LoaderManager;
@@ -77,14 +78,18 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 // Here is where you'll implement swipe to delete
+                String id = viewHolder.itemView.getTag().toString();
 
-                // TODO (1) Construct the URI for the item to delete
-                //[Hint] Use getTag (from the adapter code) to get the id of the swiped item
+                Uri deleteTaskUri = TaskContract.TaskEntry.CONTENT_URI.buildUpon()
+                                                          .appendPath(id)
+                                                          .build();
+                getContentResolver().delete(deleteTaskUri, null, null);
 
-                // TODO (2) Delete a single row of data using a ContentResolver
-
-                // TODO (3) Restart the loader to re-query for all tasks after a deletion
-                
+                getSupportLoaderManager().restartLoader(
+                        TASK_LOADER_ID,
+                        null,
+                        MainActivity.this
+                );
             }
         }).attachToRecyclerView(mRecyclerView);
 
