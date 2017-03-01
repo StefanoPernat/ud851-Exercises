@@ -25,10 +25,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Action;
 import android.support.v4.content.ContextCompat;
 
 import com.example.android.background.MainActivity;
 import com.example.android.background.R;
+import com.example.android.background.sync.ReminderTasks;
+import com.example.android.background.sync.WaterReminderIntentService;
 
 /**
  * Utility class for creating hydration notifications
@@ -45,6 +48,7 @@ public class NotificationUtils {
      * This pending intent id is used to uniquely reference the pending intent
      */
     private static final int WATER_REMINDER_PENDING_INTENT_ID = 3417;
+    private static final int ACTION_IGNORE_PENDING_INTENT_ID = 14;
 
     public static void clearAllNotification(Context context){
         NotificationManager notificationManager = (NotificationManager)
@@ -76,12 +80,24 @@ public class NotificationUtils {
         notificationManager.notify(WATER_REMINDER_NOTIFICATION_ID, notificationBuilder.build());
     }
 
-    //  TODO (5) Add a static method called ignoreReminderAction
-    //      TODO (6) Create an Intent to launch WaterReminderIntentService
-    //      TODO (7) Set the action of the intent to designate you want to dismiss the notification
-    //      TODO (8) Create a PendingIntent from the intent to launch WaterReminderIntentService
-    //      TODO (9) Create an Action for the user to ignore the notification (and dismiss it)
-    //      TODO (10) Return the action
+    public static Action ignoreReminderAction(Context context) {
+        Intent ignoreReminderIntent = new Intent(context, WaterReminderIntentService.class);
+        ignoreReminderIntent.setAction(ReminderTasks.ACTION_DISMISS_NOTIFICATION);
+
+        PendingIntent ignoreReminderPendingIntent =
+                PendingIntent.getService(
+                        context,
+                        ACTION_IGNORE_PENDING_INTENT_ID,
+                        ignoreReminderIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Action ignoreReminderAction = new Action(
+                R.drawable.ic_cancel_black_24px,
+                "No, thanks.",
+                ignoreReminderPendingIntent);
+
+        return ignoreReminderAction;
+    }
 
 
     //  TODO (11) Add a static method called drinkWaterAction
